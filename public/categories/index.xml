@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on dsp&#39;s blog</title>
+    <link>http://experimentalworks.net/categories/</link>
+    <description>Recent content in Categories on dsp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Oct 2018 18:28:03 -0700</lastBuildDate>
+    
+	<atom:link href="http://experimentalworks.net/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>rust</title>
+      <link>http://experimentalworks.net/categories/rust/</link>
+      <pubDate>Sun, 21 Oct 2018 18:28:03 -0700</pubDate>
+      
+      <guid>http://experimentalworks.net/categories/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>update</title>
+      <link>http://experimentalworks.net/categories/update/</link>
+      <pubDate>Sun, 21 Oct 2018 18:28:03 -0700</pubDate>
+      
+      <guid>http://experimentalworks.net/categories/update/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
