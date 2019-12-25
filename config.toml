@@ -1,4 +1,4 @@
-baseURL = "https://experimentalworks.net"
+baseURL = "https://experimentalworks.net/"
 languageCode = "en-us"
 title = "dsp's blog"
 theme = "pickles"
