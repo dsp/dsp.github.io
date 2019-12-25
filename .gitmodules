@@ -1,6 +1,0 @@
-[submodule "themes/hyde"]
-	path = themes/hyde
-	url = https://github.com/spf13/hyde
-[submodule "themes/pickles"]
-	path = themes/pickles
-	url = https://github.com/mismith0227/hugo_theme_pickles
