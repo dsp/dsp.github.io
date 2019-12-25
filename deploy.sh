@@ -1,7 +1,8 @@
 set -x
 set -e
 
-tree_id=$(awk '{print $3}' <(git ls-tree master -- public))
-git checkout --recurse-submodule gh-pages
+# we are deploying from dev to master
+tree_id=$(awk '{print $3}' <(git ls-tree dev -- public))
+git checkout --recurse-submodule master
 git read-tree -m -u $tree_id
 git commit -m'autodeploy'
