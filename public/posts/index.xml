@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on dsp&#39;s blog</title>
-    <link>http://experimentalworks.net/posts/</link>
+    <link>https://experimentalworks.net/posts/</link>
     <description>Recent content in Posts on dsp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 21 Oct 2018 18:28:03 -0700</lastBuildDate>
     
-	<atom:link href="http://experimentalworks.net/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://experimentalworks.net/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Generating and linking from C against a Rust library on Windows</title>
-      <link>http://experimentalworks.net/posts/2018-10-21-rust-c-ffi-windows/</link>
+      <link>https://experimentalworks.net/posts/2018-10-21-rust-c-ffi-windows/</link>
       <pubDate>Sun, 21 Oct 2018 18:28:03 -0700</pubDate>
       
-      <guid>http://experimentalworks.net/posts/2018-10-21-rust-c-ffi-windows/</guid>
+      <guid>https://experimentalworks.net/posts/2018-10-21-rust-c-ffi-windows/</guid>
       <description>I started working on xi-lib, which aims to provide a simple C interface to xi-editor. My initial research was focused on building a C library in Rust.
 The Rust FFI Rust offers a powerful FFI interface. We can easily use extern &amp;quot;C&amp;quot; fn to create functions that can be called from C. A simple example:
 #[no_mangle] pub extern &amp;#34;C&amp;#34; fn test() { println!(&amp;#34;hello world&amp;#34;); } Using #[no_mangle] ensures that the compiler does no additional name-mangling, allowing us to call this function from C, while extern &amp;quot;C&amp;quot; ensures that the function gets exported.</description>
