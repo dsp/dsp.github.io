@@ -1,0 +1,75 @@
+baseURL: "https://experimentalworks.net"
+languageCode: "en-us"
+title: "dsp"
+
+theme: "PaperMod"
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+    - disableXML: true
+    - minifyOutput: true
+
+params:
+    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    keywords: [Blog, Portfolio]
+    author: dsp
+    DateFormat: "January 2, 2006"
+    defaultTheme: auto # dark, light
+    disableThemeToggle: true
+
+    ShowReadingTime: true
+    ShowShareButtons: false
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: false
+    ShowCodeCopyButtons: true
+    ShowWordCount: true
+    ShowRssButtonInSectionTermList: false
+    UseHugoToc: true
+    disableSpecial1stPost: false
+    disableScrollToTop: false
+    comments: false
+    hidemeta: false
+    hideSummary: false
+    showtoc: false
+    tocopen: false
+
+    profileMode:
+        enabled: true
+        title: "I am David"
+        subtitle: "Software Engineer & Engineering Manager with 15+ years of experience"
+        imageUrl: "https://assets.chaos.social/accounts/avatars/109/245/550/689/304/098/original/e9deb550e40cb0a7.png"
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+            - name: Blog
+              url: "/posts"
+            - name: About 
+              url: "/about"
+
+    socialIcons: 
+        - name: "twitter"
+          url: "https://twitter.com/dsp_"
+        - name: "mastodon"
+          url: "https://chaos.social/@dsp"
+menu:
+  main:
+    - identifier: blog
+      name: blog
+      url: /posts/
+      weight: 10
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 20
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 30
+    - identifier: about
+      name: about
+      url: /about/
+      weight: 40
