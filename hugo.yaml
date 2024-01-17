@@ -39,7 +39,7 @@ params:
 
     profileMode:
         enabled: true
-        title: "I am David"
+        title: "I am dsp"
         subtitle: "Software Engineer & Engineering Manager with 15+ years of experience"
         imageUrl: "https://assets.chaos.social/accounts/avatars/109/245/550/689/304/098/original/e9deb550e40cb0a7.png"
         imageWidth: 120
