@@ -55,6 +55,8 @@ params:
           url: "https://twitter.com/dsp_"
         - name: "mastodon"
           url: "https://chaos.social/@dsp"
+        - name: "linkedin"
+          url: "https://www.linkedin.com/in/david-soria-parra-4a78b3a"
     assets:
         # disableHLJS: true # to disable highlight.js
         # disableFingerprinting: true
