@@ -7,9 +7,9 @@ I am David Soria Parra, a software engineer and manager with 15+
 years experience. 
 
 I have a rich history in developing and maintaining open source
-software. I've actively contributed to the PHP programming language
+software. I've actively contributed to the [PHP programming language](https://php.net)
 as a core developer and was responsible for the official releases
-of PHP 5.4 and PHP 5.5. I actively contributed to Git and Mercurial
+of PHP 5.4 and PHP 5.5. I actively contributed to [Git](https://git-scm.com) and [Mercurial](https://mercurial-scm.org)
 and developed key features within Mercurial such as bookmarks, pager,
 shelving and more.
 
