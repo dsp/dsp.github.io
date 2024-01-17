@@ -20,6 +20,10 @@ ShowPostNavLinks: true
 ShowWordCount: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
+cover:
+    image: "cover.png"
+    alt: "A person reading a book in a library. In front of them is a mechanical apperatus"
+    relative: true
 ---
 
 A few years back, I was invited to a set of executive reviews of
