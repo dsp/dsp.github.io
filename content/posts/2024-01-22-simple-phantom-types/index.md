@@ -28,12 +28,15 @@ fn ping_user(user_id: u64) {
 This method works but is prone to errors. Nothing stops us from mistakenly doing:
 
 ```rust
-let group_id = new_group_id(); ping_user(group_id); // This compiles!
+let group_id = new_group_id(); 
+ping_user(group_id); // This compiles!
 ```
 
-This is far from ideal. We have a powerful type system at our disposal, so why not use it to prevent such mistakes?
+This is far from ideal and can led to very difficult to debug issues.
 
-# A Solution
+We have a powerful type system at our disposal, so why not use it to prevent such mistakes?
+
+# A Potential Solution
 
 One approach is to create unique types for each ID:
 
@@ -51,7 +54,7 @@ ping_user(GroupId(12345)); // This triggers an error!
 
 This method works but has its drawbacks:
 
-- We need to implement traits like `Deref` separately for each type.
+- We need to implement methods that operate on Ids separately.  While the type is semantically different operations on them might still be shared (e.g. generating the next id from an atomic pool).
 - We end up generating separate code for all these types, despite them having the same underlying data.
 
 # An Arguably Better Solution
@@ -85,11 +88,13 @@ ping_user(GroupId::new(12345)); // This triggers an error
 
 ```
 
-So, what's happening here? We define a generic type `Id<T>` to hold our value. We can implement any function on it, like `new`, and it will apply to all our IDs. The types are distinguished by marking them with a struct, using the type `std::marker::PhantomData`. Each `Id` instance is uniquely identified at the type system level.
+So, what's happening here? We define a generic type `Id<T>` to hold our value. We do not create multiple separate type. This means, we e can implement any method on `Id<T>` and it will be shared across all our IDs (for example `new`). How do we semantically separate them? This is where [`std::marker::PhantomData`](https://doc.rust-lang.org/std/marker/struct.PhantomData.html) comes into play.
+
+We mark each type with a struct (any type here would work, but we use structs) during instantiation. So our group id becomes `Id<GroupIdMarker>`. This way, on a type-system level, each id is a unique type. But what does this `std::marker::PhantomData` do?
 
 ## Ghostly
 
-The key part here is that `std::marker::PhantomData` is purely a marker for the type system. It doesn't require runtime allocation or take any space in the structure. It's just a _tag_ on the structure at compile time.
+The key is that `std::marker::PhantomData` is purely a marker for the type system. It doesn't require runtime allocation and will not take any space in the structure. The structure will have the same size as the an `SomeId(u64)`. The phantom data is only there to hold the type. In some ways it can be thought of as a _tag_ on the structure at compile time.
 
 While the initial implementation might be a bit more verbose, we gain some nice benefits:
 
