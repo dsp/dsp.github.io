@@ -27,7 +27,6 @@ cover:
   relative: true
 categories:
   - thoughts
-  - workplace
 ---
 
 A few years back, I was invited to a set of executive reviews of
