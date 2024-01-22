@@ -1,5 +1,5 @@
 ---
-title: "Phantom Types to mark semantically different types"
+title: Marking Types in Rust
 date: 2024-01-22T15:45:03Z
 draft: true
 tags:
@@ -9,6 +9,8 @@ tags:
 author: dsp
 categories:
   - shorts
+cover:
+  image: cover.png
 ---
 **Quick Overview of Using Rust's PhantomData to Encode Semantic Differences Between Types in an Efficient and Elegant Way**
 
@@ -18,7 +20,9 @@ Let's say we're writing a program with various types of IDs: user IDs, group IDs
 
 
 ```rust
-fn ping_user(user_id: u64) {     ... }
+fn ping_user(user_id: u64) {
+   //...
+}
 ```
 
 This method works but is prone to errors. Nothing stops us from mistakenly doing:
@@ -39,7 +43,7 @@ struct UserId(u64);
 ...
 
 fn ping_user(id: UserId) {
-    ...
+    //...
 }
 
 ping_user(GroupId(12345)); // This triggers an error!
@@ -72,10 +76,10 @@ struct GroupIdMarker;
 
 pub type UserId = Id<UserIdMarker>;
 pub type GroupId = Id<GroupIdMarker>;
-...
+//...
 
 fn ping_user(id: UserId) {
-    ...
+    //...
 }
 ping_user(GroupId::new(12345)); // This triggers an error
 
