@@ -1,7 +1,7 @@
 ---
 title: Marking Types in Rust
 date: 2024-01-22T15:45:03Z
-draft: true
+draft: false
 tags:
   - short
   - rust
