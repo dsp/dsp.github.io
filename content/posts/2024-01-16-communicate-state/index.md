@@ -1,17 +1,18 @@
 ---
-title: "Communicate State"
+title: Communicate State
 date: 2024-01-16T14:37:20+00:00
-tags: ["communication", "essay"]
-author: "dsp"
+tags:
+  - communication
+  - essay
+author: dsp
 showToc: true
 TocOpen: false
 draft: false
 hidemeta: false
 comments: false
 description: ""
-disableHLJS: true # to disable highlightjs
-disableShare: false
 disableHLJS: false
+disableShare: false
 hideSummary: false
 searchHidden: true
 ShowReadingTime: true
@@ -21,9 +22,12 @@ ShowWordCount: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
 cover:
-    image: "cover.png"
-    alt: "A person reading a book in a library. In front of them is a mechanical apperatus"
-    relative: true
+  image: cover.png
+  alt: A person reading a book in a library. In front of them is a mechanical apperatus
+  relative: true
+categories:
+  - thoughts
+  - workplace
 ---
 
 A few years back, I was invited to a set of executive reviews of
