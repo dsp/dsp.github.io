@@ -1,5 +1,5 @@
 ---
-title: Marking Types in Rust
+title: Nominal Types
 date: 2024-01-22T15:45:03Z
 draft: false
 tags:
@@ -12,11 +12,11 @@ categories:
 cover:
   image: cover.png
 ---
-**Quick Overview of Using Rust's PhantomData to Encode Semantic Differences Between Types in an Efficient and Elegant Way**
+**Quick overview of using nominal types to encode semantic differences between types in an efficient and elegant way**
 
 # The Problem
 
-Let's say we're writing a program with various types of IDs: user IDs, group IDs, document IDs, etc. All of these can be represented as unsigned 64-bit integers. However, semantically, they're different. A user ID shouldn't be interchangeable with a group ID or a document ID. A common approach to differentiate them in code is through naming conventions:
+Let's say we're writing a program with various types of IDs: user IDs, group IDs and document IDs. These can be represented as unsigned 64-bit integers. However, semantically, they're different. A user ID shouldn't be interchangeable with a group ID or a document ID. The most common approach is to differentiate them through naming conventions:
 
 
 ```rust
@@ -32,9 +32,9 @@ let group_id = new_group_id();
 ping_user(group_id); // This compiles!
 ```
 
-This is far from ideal and can led to very difficult to debug issues.
+This is far from ideal. If we were to accidentally pass a group_id into a function expecting a user_id, nothing would stop us and we would be faced with a difficult to debug production issue. This method, while very common, relies on engineers get it right 100% of the time. Can we do better? Of course we can!
 
-We have a powerful type system at our disposal, so why not use it to prevent such mistakes?
+In rust, we have a powerful type system at our disposal. We can use this to prevent these errors at compile time.
 
 # A Potential Solution
 
@@ -52,14 +52,15 @@ fn ping_user(id: UserId) {
 ping_user(GroupId(12345)); // This triggers an error!
 ```
 
-This method works but has its drawbacks:
+This method works. The compile will stop us to from passing a `GroupId` where a `UserId` is expected. There are, however, some drawbacks to this specific method:
 
-- We need to implement methods that operate on Ids separately.  While the type is semantically different operations on them might still be shared (e.g. generating the next id from an atomic pool).
+- We need to implement any methods operating on these types for each type separately. This leads to code-bloat.
 - We end up generating separate code for all these types, despite them having the same underlying data.
+- We might also create inconsistencies if we forget to add a method to GroupId that exists for UserId and would apply similarly to both (let's say for example a `generate_next_id` method).
 
 # An Arguably Better Solution
 
-There's arguably a more elegant way to do this. The idea is to implement a generic type that holds our value and _tag_ it with a type to semantically differentiate them. Here's how:
+There's arguably a more elegant way to do this. The idea is to implement a generic type that holds our value and _tag_ it with a type to semantically differentiate them. These types are called *Nominal Types* or *Tagged Types*. Here's how:
 
 ```rust
 struct Id<T> {
@@ -88,26 +89,26 @@ ping_user(GroupId::new(12345)); // This triggers an error
 
 ```
 
-So, what's happening here? We define a generic type `Id<T>` to hold our value. We do not create multiple separate type. This means, we e can implement any method on `Id<T>` and it will be shared across all our IDs (for example `new`). How do we semantically separate them? This is where [`std::marker::PhantomData`](https://doc.rust-lang.org/std/marker/struct.PhantomData.html) comes into play.
-
-We mark each type with a struct (any type here would work, but we use structs) during instantiation. So our group id becomes `Id<GroupIdMarker>`. This way, on a type-system level, each id is a unique type. But what does this `std::marker::PhantomData` do?
+What is happening here? We define a generic type `Id<T>` to hold our value. Every method we implement on `Id<T>` will be available to all the instantiated types. We have less code-bloat and a more consistent view. But how do we semantically distinguish instantiated types? This is where [`std::marker::PhantomData`](https://doc.rust-lang.org/std/marker/struct.PhantomData.html) comes into play.
 
 ## Ghostly
 
-The key is that `std::marker::PhantomData` is purely a marker for the type system. It doesn't require runtime allocation and will not take any space in the structure. The structure will have the same size as the an `SomeId(u64)`. The phantom data is only there to hold the type. In some ways it can be thought of as a _tag_ on the structure at compile time.
+At the heart of this approach is the use of `std::marker::PhantomData` to tag our generic structure. _PhantomData enables us to associate one type with another at compile time, effectively creating distinct, instantiated types from the same generic template_. For instance, `Id<UserIdMarker>` and `Id<GroupIdMarker>` are treated as separate, distinct types by the Rust compiler, preventing any mix-ups between the two. Despite this, in the compiled binary, they are identical in terms of code and size.
 
-While the initial implementation might be a bit more verbose, we gain some nice benefits:
+The beauty of PhantomData lies in its non-impact on runtime performance and memory. It doesn't require any runtime allocation, nor does it add any size to the structure. Therefore, a structure like `Id<SomeTypeMarker>` will have the same memory footprint as a simple `SomeId(u64)`. PhantomData's role is purely to maintain type information, enabling the creation of unique, type-safe identifiers. It's akin to a compile-time tag on the structure, ensuring type safety without runtime cost.
 
-- Methods on `Id<T>` generalize to all our IDs.
-- No code duplication.
-- We can still implement specific methods for a subtype, like `impl Id<GroupIdMarker> { ...}`.
+This method, while perhaps a bit more verbose initially, offers significant advantages:
 
-Of course, there are some drawbacks. Phantom types are somewhat advanced and can be trickier to grasp for those unfamiliar with the concept.
+- Methods defined on `Id<T>` are applicable to all our ID types, providing a unified interface.
+- It eliminates the need for duplicating code for each ID type.
+- It still allows for the implementation of specific methods for particular ID types, such as `impl Id<GroupIdMarker> { ...}`.
+
+However, it's worth noting that working with phantom types can be more complex, especially for those new to the concept. They require a deeper understanding of Rust's type system but offer robust type safety in return.
 
 ## Generalization
 
-We can use any type as the inner type: `String`, `Uuid`, etc. Want to separate passwords from usernames in your code? Create phantom types like `type Username = Input<UsernameMarker>`, `type Password = Input<PasswordMarker>`, and so on.
+This approach is versatile. We can apply it virtually to any type, such as `String`, `Uuid`, and more. Imagine you need to separate passwords from usernames in your code? By creating nominal types such as `type Username = Input<UsernameMarker>` and `type Password = Input<PasswordMarker>` over a generic type `Input<T>` holding a PhantomData, you can clearly enforce the separation in your code.
 
 # Conclusion
 
-Rust's type system is incredibly powerful. We can leverage it to ensure, at the type system level, that we're using semantically correct types. Phantom types offer an elegant solution for creating these distinct types.
+Rust's type system is powerful. We can use it to enforce semantic correctness right at the type level. PhantomData is a neat little trick in our Rust toolbox, that allow us to create rich nominal types in our code. They are an effective strategy to write more robust and error-resistant code.
