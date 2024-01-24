@@ -1,5 +1,5 @@
 ---
-title: Nominal Types
+title: Phantom Types
 date: 2024-01-22T15:45:03Z
 draft: false
 tags:
@@ -12,8 +12,9 @@ categories:
 cover:
   image: cover.png
 ---
-**Quick overview of using nominal types to encode semantic differences between types in an efficient and elegant way**
+*UPDATE Wed 24th, 2024: This article was originally called "Nominal Types". A few people on [lobste.rs](https://lobste.rs/s/12qnj3/nominal_types_rust) and [r/programming](https://www.reddit.com/r/programming/comments/19dwi7p/nominal_types_in_rust/) pointed out that naming this Nominal Types is incorrect. A better description would be **Phantom Types** or maybe **Tagged Types**.*
 
+**Quick overview of using nominal types to encode semantic differences between types in an efficient and elegant way**
 # The Problem
 
 Let's say we're writing a program with various types of IDs: user IDs, group IDs and document IDs. These can be represented as unsigned 64-bit integers. However, semantically, they're different. A user ID shouldn't be interchangeable with a group ID or a document ID. The most common approach is to differentiate them through naming conventions:
@@ -60,7 +61,7 @@ This method works. The compile will stop us to from passing a `GroupId` where a 
 
 # An Arguably Better Solution
 
-There's arguably a more elegant way to do this. The idea is to implement a generic type that holds our value and _tag_ it with a type to semantically differentiate them. These types are called *Nominal Types* or *Tagged Types*. Here's how:
+There's arguably a more elegant way to do this. The idea is to implement a generic type that holds our value and _tag_ it with a type to semantically differentiate them. These types are called *Phantom Types* or *Tagged Types*. Here's how:
 
 ```rust
 struct Id<T> {
@@ -107,8 +108,8 @@ However, it's worth noting that working with phantom types can be more complex, 
 
 ## Generalization
 
-This approach is versatile. We can apply it virtually to any type, such as `String`, `Uuid`, and more. Imagine you need to separate passwords from usernames in your code? By creating nominal types such as `type Username = Input<UsernameMarker>` and `type Password = Input<PasswordMarker>` over a generic type `Input<T>` holding a PhantomData, you can clearly enforce the separation in your code.
+This approach is versatile. We can apply it virtually to any type, such as `String`, `Uuid`, and more. Imagine you need to separate passwords from usernames in your code? By creating phantom types such as `type Username = Input<UsernameMarker>` and `type Password = Input<PasswordMarker>` over a generic type `Input<T>` holding a PhantomData, you can clearly enforce the separation in your code.
 
 # Conclusion
 
-Rust's type system is powerful. We can use it to enforce semantic correctness right at the type level. PhantomData is a neat little trick in our Rust toolbox, that allow us to create rich nominal types in our code. They are an effective strategy to write more robust and error-resistant code.
+Rust's type system is powerful. We can use it to enforce semantic correctness right at the type level. PhantomData is a neat little trick in our Rust toolbox, that allow us to create rich phantom types in our code. They are an effective strategy to write more robust and error-resistant code.
