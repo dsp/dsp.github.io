@@ -11,6 +11,8 @@ categories:
   - shorts
 cover:
   image: cover.png
+  relative: true
+  alt: "A ghost sitting in front of a laptop"
 ---
 *UPDATE Wed 24th, 2024: This article was originally called "Nominal Types". A few people on [lobste.rs](https://lobste.rs/s/12qnj3/nominal_types_rust) and [r/programming](https://www.reddit.com/r/programming/comments/19dwi7p/nominal_types_in_rust/) pointed out that naming this Nominal Types is incorrect. A better description would be **Phantom Types** or maybe **Tagged Types**.*
 
