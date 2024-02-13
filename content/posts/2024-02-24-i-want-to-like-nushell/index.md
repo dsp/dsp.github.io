@@ -1,7 +1,7 @@
 ---
-title: "I want to like Nushell"
+title: I want to like Nushell
 date: 2024-02-13T11:03:01Z
-draft: true
+draft: false
 tags:
   - short
   - shell
@@ -11,7 +11,7 @@ categories:
 cover:
   image: cover.webp
   relative: true
-  alt: "A mixture of tron and a terminal icon, thanks DALLE"
+  alt: A mixture of tron and a terminal icon, thanks DALLE
 ---
 I don't like bash, I don't like zsh, but I am stuck with them. I tried [fish](https://fishshell.com/) and [oil](https://www.oilshell.org/), but somehow never got the hang of it (note... i should revisit them). So when I saw [pcwalton](https://twitter.com/pcwalton) playing around with yet another new shell, I was intrigued.
 
