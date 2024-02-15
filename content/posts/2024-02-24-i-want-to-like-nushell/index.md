@@ -45,7 +45,7 @@ This results in
 ```
 ![find in nushell](./images/nushell-find.png)
 
-Nice! I really liked that. It is quite intuitive and really shows the power. Arguable the `ls **/*` is a bit cumbersome, and I wish there was a `ls -r` or so instead, but those are nitpicks.
+Nice! I really liked that. It is quite intuitive and really shows the power of structure data. Arguable having to use `ls **/*` to get a recursive list of files, is a bit cumbersome, and I wish there was a `ls -r` or so instead, but that's a nitpick and I can certainly life without.
 
 ## Structured TOML, JSON, etc
 One of the cool features of nushell is the ability to open structured file formats and interact with them on the shell. For example, running `open pyproject.toml`, gives you a visual representation of the toml file:
