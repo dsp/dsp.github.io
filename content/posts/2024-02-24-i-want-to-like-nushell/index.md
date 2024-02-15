@@ -52,7 +52,7 @@ One of the cool features of nushell is the ability to open structured file forma
 ![open a toml in nushell](./images/nushell-open.png)
 Of course, I can then go ahead and query it:
 ![filter a toml in nushell](./images/nushell-toml-filter.png)
-Neat! This also works with JSON and others.
+Neat! This also works with JSON and a good set of other structured formats. It opens a ton of possibilities. Of course you can always use `jq` and others, but having it built it for a set of common formats lets you both interactively and in scripts do really cool stuff.
 ## Complete all the things
 I keep all my source code in `~/src`. I always wanted a fast way to switch to a project. It was a good task to see how easy it is to implement custom commands with nushell. The goal was simple: *Create a `p $name` command that switches to the project `$name`.*
 
