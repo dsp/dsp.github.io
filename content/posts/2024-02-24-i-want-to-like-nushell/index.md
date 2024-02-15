@@ -114,3 +114,6 @@ However, it is still lacking core features of a shell. For all it's bells and wh
 So now I am stuck. I really want to like nushell. It comes close to the shell I always wanted (okay, i really want a shell with a purely functional programming language, probably ocaml style, but hey...one can wish), but in the end, I can't shake the feeling that for all the cool stuff they are doing, they don't focus on the core of a shell.
 
 I don't want to go back to bash and zsh, and yet I often have to.
+
+# Community
+After I published this post, the community reached out to me. I got some of the details wrong and changed the post accordingly. I want to say thanks to [fdncred](https://github.com/fdncred) and others in the nushell discord server. It's been an incredible nice and helpful community.
