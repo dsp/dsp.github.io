@@ -35,17 +35,17 @@ My first impressions where quite positive. The structure data approached worked 
 ## Where is my ... file?
 I don't know where stuff is in my directories. I rely a lot on `find` or `fd`. I was super stoked to use `find` with some cool filters in nushell. Well it turns out there is no find command. I quickly realised, this is not the nushell way to think about a problem. After fiddling with it for a bit, I found a good way to query my files. I found it to be a great example of how to use the structured data approach. 
 
-Imagine I want to find all `.rs` files in a repository:
-1. List everything
+Imagine I want to find all `.rs` over a certain size files in a repository:
+1. List everything matching the glob `*.rs`
 2. Filter for only files using a [filter](https://www.nushell.sh/commands/categories/filters.html)
-3. Find `.rs` in names using [`find`](https://www.nushell.sh/commands/docs/find.htmll)
+3. Filter for a certain size
 This results in
 ``` sh
-> ls **/* | where type == "file"  | find --columns [name] -r 'rs$'
+> ls **/*.rs | where type == "file" and size > 100kb 
 ```
 ![find in nushell](./images/nushell-find.png)
 
-Nice! I really liked that. Arguable the `ls **/*` is a bit cumbersome, and I wish there was a `ls -r` or so instead, but it's good enough.
+Nice! I really liked that. It is quite intuitive and really shows the power. Arguable the `ls **/*` is a bit cumbersome, and I wish there was a `ls -r` or so instead, but those are nitpicks.
 
 ## Structured TOML, JSON, etc
 One of the cool features of nushell is the ability to open structured file formats and interact with them on the shell. For example, running `open pyproject.toml`, gives you a visual representation of the toml file:
@@ -103,9 +103,9 @@ Another nushell annoyance (and by annoyance I say W - T - F out loud, every sing
 ![nushell and syntax](./images/nushell-and.png)
 So nushell tells me to use `;` (ignore the `and` bit, that's for boolean operations only). That's great, but it's not the same as `&&`. I want to run the second command conditionally on the first. I want to run `x || echo "IT'S BORKED!'` in my scripts. I want to `c++ -o myprogram main.cpp && ./myprogram` all the time.
 
-Of course , I can rewrite this as `if $env.LAST_EXIT_CODE != {...}` but that's very cumbersome on the command line. A shell language is about being concise.
+Of course , I can rewrite this as `if $env.LAST_EXIT_CODE != {...}` or `try { ... } catch { ... }` (see : [#7448](https://github.com/nushell/nushell/pull/7448), [#7452](https://github.com/nushell/nushell/pull/7452) and [#7479](https://github.com/nushell/nushell/issues/7479)), but that's very cumbersome on the command line. A shell language is about being concise.
 
-There is an [open issue on github](https://github.com/nushell/nushell/issues/5740) about this, so I stay hopeful, but given the issue is open since 1.5 years, isn't very promising.
+There are a set of [open issues on github](https://github.com/nushell/nushell/issues/5740) about this, so I stay hopeful, but given the issue is open since 1.5 years, isn't very promising.
 # Conclusion
 I want to like nushell. In it's core, the ideas of using structure data are good. Some features such as `open` or built-in databases, are great. I always wanted these cool features in my shell. Writing new commands is easy and adding completion is very nice actually.
 
