@@ -59,7 +59,7 @@ I keep all my source code in `~/src`. I always wanted a fast way to switch to a 
 I quickly headed over to my nushell config via `config nu` and wrote a short command:
 ```
 module commands {
-    export def p [name: string] {
+    export def --env p [name: string] {
         let thepath = "~/src/" + $name
         cd (if (echo $thepath | path exists) {
             echo $thepath
@@ -84,24 +84,14 @@ def p-complete [] {
 
 Now typing `$ p <TAB>` gives me a nice completion for little directory changer command `p`. That was easy, and cool. I really start to like nushell.
 ## Cope with Scope
-If you took a careful look at `p`, you might notice an oddity: 
+If you took a careful look at `p`, you might notice an `--env`: 
 ```
-        cd (if (echo $thepath | path exists) {
-            echo $thepath
-        } else {
-            echo $env.PWD
-        })
+    export def --env p [name: string] 
 ```
 
-wouldn't it be *way* easier to write write
-```
-        if (echo $thepath | path exists) {
-            cd $thepath
-        }
-```
-Well it turns out nushell has some [strict scoping rules](https://www.nushell.sh/book/environment.html#scoping). `if` will create a new scope, and any manipulation of `$env.PWD`, or running the equivalent `cd`, will be thrown away after the scope exits. So this means, `cd` will happen, but once we are out of the if block, our `$env.PWD` resets. 
+Nushell has some [strict scoping rules](https://www.nushell.sh/book/environment.html#scoping). Any environment variable inside the custom command will only exist inside the command's scope. You must specify `--env` in order to preserve env variables. It takes a bit use-to, but makes modification of environment variables explicit.
 
-Well, I am sure scoping rules have their reasons, but for me this behaviour was unexpected. Having scoping rules for if-blocks is fairly unintuitive, particularly in a shell environment where manipulating env variables, or other state is quite common. Anyway, I had to settle with a just always calling `cd` and returning a different path. It worked, but it's not pretty. For me this was one of the first of a few oddities with nushell...
+**Note**: Previous versions of the blog post contained criticism on scoping, which were unfounded.
 
 ## You had one job...
 A common use-case for me is editing a file in `vim`, then using [`CTRL-Z`](https://neovim.io/doc/user/usr_21.html#21.1) to suspend vim, return to the command line, edit something and use `fg` to resume. It turns out, nushell [doesn't have job control](https://github.com/nushell/nushell/discussions/5948). If you hit `CTRL-Z` you get back the shell, but the shell just hangs. Well that's not good is it. I slowly try to retrain my habits and just exit vim, but every so often I get stuck. 
