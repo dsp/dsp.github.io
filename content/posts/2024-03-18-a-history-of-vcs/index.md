@@ -5,9 +5,7 @@ draft: true
 ---
 
 # A History of Source Control Management Systems
-
-
-Source Control Management (SCM) Systems, have a long and rich history. As the systems evolved, so have their concepts, use cases and adoption over time. While SCMs are ubiquitous in modern software development, they have been fairly novel in early 90s, and arguable it took the rise of Git and Github for them to be used nearly everywhere.
+Source Control Management (SCM) Systems, have a long and rich history. As th `e systems evolved, so have their concepts, use cases and adoption over time. While SCMs are ubiquitous in modern software development, they have been fairly novel in early 90s, and arguable it took the rise of Git and Github for them to be used nearly everywhere.
 
 I want to provide an overview of what I consider the most  important and influential systems over time. This list does not attempt to be complete. There are many systems that aren’t covered and details that I will be missing. The history of some of these systems are difficult to trace back. There is little write up on the origins of early software, and so my primary sources of many of these are Wikipedia. More recent systems such as SVN, Mercurial and Git are easier to trace and I often recall some of the details from memory.
 
@@ -120,8 +118,7 @@ The GNU projects maintains a reimplementation of SCCS as [CSSC](https://www.gnu.
 #### Legacy
 
 While very few people use SCCS nowadays, it influence on modern version control systems can’t be denied. Ideas such as storing deltas, adding comments to commits, specific folders for storing versions (SCCS/) and expanding version IDs during checkout will remain used in many version control systems.
- 
-#### Taking a look 
+
 ### 1982: RCS
 SCCS was the sole version control system for the first nine years after its creation. In 1982, [Walter Tichy](https://en.wikipedia.org/wiki/Walter_F._Tichy) developed [RCS](https://en.wikipedia.org/wiki/Revision_Control_System) at the Purdue University. It’s design was published as a paper [“Design, Implementation, and Evolution of a Revision Control System”](https://dl.acm.org/doi/10.5555/800254.807748) in the Proceedings of the 6th International Conference on Software Engineering (ICSE’82).
 
@@ -140,7 +137,7 @@ This has distinct advantages. In the most common case, checking out the most rec
 Let’s take a look at a RCS file. Note that all RCS files are usually stored as the filename with an appended suffix `,v`. Binary data is generally stored with each version being gzipped:
 
 An example:
-```
+```rcs
 1.2
 log
 @Hello world.
@@ -174,8 +171,7 @@ many features that are missing from RCS. For example,
 SCCS performs complete checksumming, and provides
 flags that control the creation of branches and the
 range of revision numbers. We feel that many of these
-features are unnecessary and contribute to the bulki-
-ness of SCCS. We realize, however, that some of these
+features are unnecessary and contribute to the bulkiness of SCCS. We realize, however, that some of these
 features may creep into RCS eventually.*
 > 
 > -- Design, Implementation, and Evolution of a Revision Control System
