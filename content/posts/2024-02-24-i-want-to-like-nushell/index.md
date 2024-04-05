@@ -2,7 +2,7 @@
 title: I want to like Nushell
 date: 2024-02-13T11:03:01Z
 draft: false
-tags:
+gags:
   - short
   - shell
 author: dsp
