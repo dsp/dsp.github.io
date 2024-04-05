@@ -1,6 +1,6 @@
 ---
 title: "A History of Source Control Management Systems: Part 1"
-date: 2024-04-05T22:35:00Z
+date: 2024-04-05T20:35:00Z
 draft: false
 tags:
   - history
