@@ -231,7 +231,9 @@ The [first commit](https://git.savannah.gnu.org/cgit/rcs.git/commit/?h=p&id=2a07
 
 > Import RCS 4.3 from <ftp://ftp.cs.purdue.edu/pub/RCS/>
 
-RCS, hence, tracks it history all the way back. RCS was actively maintained by [Thien-Thi Nguyen](https://savannah.gnu.org/users/ttn), until his [death](https://lists.gnu.org/archive/html/emacs-devel/2023-09/msg00713.html) in October 2022. The project is unmaintained at the moment.
+GNU RCS tracks it history all the way back to the original RCS from 1982. GNU RCS was actively maintained by [Thien-Thi Nguyen](https://savannah.gnu.org/users/ttn), until his [death](https://lists.gnu.org/archive/html/emacs-devel/2023-09/msg00713.html) in October 2022. The project is unmaintained at the moment.
+
+OpenRCS maintains a [reimplementation of RCS](https://cvsweb.openbsd.org/cgi-bin/cvsweb/src/usr.bin/rcs/) under the MIT license. It is distributed as part of OpenBSD since version 4.0. FreeBSD and NetBSD ship GNU RCS as part of their packages/ports.
 
 #### Legacy
 RCS is one of the most influential source control systems to this day. Systems like CVS and Perforce use RCS file formats to this day. Terminology such as commit, checkout, log are common source control terminology. RCS’s keyword expansion syntax ($Id$, $Date$) will find widespread adoption in other version control systems. Most modern source control system such as Git or Mercurial use similar separated-delta techniques.
