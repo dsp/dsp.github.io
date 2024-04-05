@@ -181,6 +181,14 @@ d4 1
 @
 ```
 
+We can see that the most recent version `1.2` contains the full text. Version `1.1` contains the delta information to go from `1.2` to `1.1`. Delta information is *line based*. The string `@d1 1, d4 1` means starting at line 1 and line 4, delete one line. If we follow these commands, we get the original version:
+
+```c
+int main() {
+    return 0;
+}
+```
+
 #### Claimed improvements over SCCS
 Tichy’s original paper from 1982 claimed a few improvements over SCCS:
 
