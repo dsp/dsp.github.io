@@ -151,7 +151,6 @@ The second difference, was to store **deltas in reverse order**. The most recent
 
 This has distinct advantages. In the most common case, of checking out the most recent version, RCS requires only to read the last version and stream the content directly to a file, making checkout much faster. When writing a new revision, RCS must only calculate the difference between the new version and the most recently stored version and overwrite the last stored version with the delta and then append the new full file. In contrast, SCCS needs to always rewrite the whole file when a new version is inserted, and needs to read the whole file if any version is retrieved. On the flip side, retrieving older versions can be slower in RCS than in SCCS, where restoring any version takes always the same time.
 
-#### Implementations
 Let’s take a look at a RCS file. Note that all RCS files are usually stored as the filename with an appended suffix `,v`. Binary data is generally stored with each version being gzipped:
 
 An example:
@@ -163,7 +162,7 @@ log
 text
 @#include <stdio.h>
 
-int main() {
+int main(void) {
     printf("hello world\n");
     return 0;
 }
@@ -176,12 +175,13 @@ log
 @Initial revision
 @
 text
-@d1 1
-d4 1
+@d1 4
+a4 1
+int main() {
 @
 ```
 
-We can see that the most recent version `1.2` contains the full text. Version `1.1` contains the delta information to go from `1.2` to `1.1`. Delta information is *line based*. The string `@d1 1, d4 1` means starting at line 1 and line 4, delete one line each. If we follow these commands, we get the original version[^4]:
+We can see that the most recent version `1.2` contains the full text. Version `1.1` contains the reversed delta information to go from `1.2` to `1.1`. Delta information is *line based*. The string `d1 4` means starting at line 1 delete 4 lines. `a4 1 ...`, means starting at line 4, add the following line. If we follow these commands, we get the original version[^4]:
 
 ```c
 int main() {
