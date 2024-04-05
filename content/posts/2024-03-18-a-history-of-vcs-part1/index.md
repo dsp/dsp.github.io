@@ -181,13 +181,15 @@ d4 1
 @
 ```
 
-We can see that the most recent version `1.2` contains the full text. Version `1.1` contains the delta information to go from `1.2` to `1.1`. Delta information is *line based*. The string `@d1 1, d4 1` means starting at line 1 and line 4, delete one line. If we follow these commands, we get the original version:
+We can see that the most recent version `1.2` contains the full text. Version `1.1` contains the delta information to go from `1.2` to `1.1`. Delta information is *line based*. The string `@d1 1, d4 1` means starting at line 1 and line 4, delete one line each. If we follow these commands, we get the original version[^4]:
 
 ```c
 int main() {
     return 0;
 }
 ```
+
+
 
 #### Claimed improvements over SCCS
 Tichy’s original paper from 1982 claimed a few improvements over SCCS:
@@ -255,3 +257,4 @@ If you have corrections, suggestions or just want to say thanks, please send a m
 [^1]: Taken from Wikipedia, https://en.wikipedia.org/wiki/Interleaved_deltas (Retrieved 18 March 2024).
 [^2]: SCCS Commands from IBM AIX: https://www.ibm.com/docs/en/aix/7.2?topic=s-sccs-command
 [^3]: Notable, the GPL was released on February 1st, 1989, just 9 months before Tichy applied it to RCS.
+[^4]: `diff --rcs` produces an RCS-style diff!
