@@ -213,7 +213,7 @@ features may creep into RCS eventually.*
 > -- Design, Implementation, and Evolution of a Revision Control System
  
 #### Example
-Now let’s take a look at a common usage. We are checkout out our `main.c` from an existing RCS file. We lock it during checkout so we can write it (without, RCS would check it out read-only). We edit it and check in a new version. Lastly, we are done and unlock the file.
+Now let’s take a look at a common usage. We checkout our `main.c` from an existing RCS file. We lock it during checkout so we can write it (without, RCS would check it out read-only). We edit it and check in a new version. Lastly, we are done and unlock the file.
 
 ```
 $ co -l main.c
