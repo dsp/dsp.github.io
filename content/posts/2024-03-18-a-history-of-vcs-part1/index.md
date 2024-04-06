@@ -199,7 +199,7 @@ Firstly, the results in checkout and checking operations were much faster for th
 
 Secondly, it claimed that the UX of SCCS at the time, where one has to operate on the version files, rather than the checked out files (e.g. `sccs delta s.main.c`), was a common pinpoint among programmers. Hence RCS supported specifying either the checked out file or the version file. 
 
-Thirdly, RCS improved on the lock mechanism employed by both SCCS and RCS to ensure a single writer at a time, by leaving allowing unprivileged users to overwrite a lock, while adding a paper trail (in form of sending a local email) to when a lock was broken. SCCS in contrast required privileged users to break the lock, and did not leave any paper trail. 
+Thirdly, RCS improved on the lock mechanism employed by both SCCS and RCS to ensure a single writer at a time, by allowing unprivileged users to overwrite a lock, and sending a local email the the holder of the lock, when a lock was broken. SCCS in contrast required privileged users to break the lock, and did not leave any paper trail. 
 
 Notable, the initial version of RCS did not include checksumming, branching or tagging, which SCCS at the time already supported. Tichy felt that some of these features were unnecessary, but already foresaw that RCS will eventually gain these features (which of course it did).
 
