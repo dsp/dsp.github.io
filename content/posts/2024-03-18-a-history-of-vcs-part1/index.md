@@ -36,7 +36,7 @@ Part 4 (TBD) will put the spotlight on the next leap in version control systems:
 
 With the origins of decentralised version control systems behind us, we will focus in Part 5 (TBD), on the version control systems wars between 2005 to 2015, where three main systems, Git, Mercurial and Bazaar were simultaneously developed.
 
-In the last two parts (TBD), we will take a quick look at the current landscape of version control systems, as well as some interesting ideas that are developed as part of Fossil and Pijul, before I will talk about, what I consider the mission version control system.
+In the last two parts (TBD), we will take a quick look at the current landscape of version control systems, as well as some interesting ideas that are developed as part of Fossil and Pijul, before I will talk about, what I consider the missing version control system.
 
 I would very much appreciate feedback on this series of blog posts. Please reach out to me at blog at (this domain), [Lobste.rs](https://lobste.rs/s/i3eg8u/history_source_control_systems_sccs_rcs) or [Hacker News](https://news.ycombinator.com/item?id=39950712).
 
