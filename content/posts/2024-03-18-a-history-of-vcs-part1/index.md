@@ -251,7 +251,7 @@ RCS is one of the most influential source control systems to this day. Systems l
 
 ### Conclusion
 
-I hope you enjoyed this little overview of SCCS and RCS. In the next blog post we will take a look at the 1990s where the first centralized source control systems appear. They will allow multiple users to work on source code in concurrently and exchange commits via the network.
+I hope you enjoyed this little overview of SCCS and RCS. In the next blog post we will take a look at the 1990s where the first centralized source control systems appear. They will allow multiple users to work on source code  concurrently and exchange commits via the network.
 
 If you have corrections, suggestions or just want to say thanks, please send a mail to blog at (this domain).
 
