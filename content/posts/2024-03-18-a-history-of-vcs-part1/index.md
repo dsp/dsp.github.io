@@ -14,7 +14,7 @@ cover:
   alt: A person organizing files and folders in front of computers
 ---
 
-*[HN Thread](https://news.ycombinator.com/item?id=39950712) and [lobste.rs thread](https://experimentalworks.net/posts/2024-03-18-a-history-of-vcs-part1/).*
+*[HN Thread](https://news.ycombinator.com/item?id=39950712) and [lobste.rs thread](https://lobste.rs/s/i3eg8u/history_source_control_systems_sccs_rcs).*
 
 Source Control Management (SCM) Systems, have a long and rich history. As the systems evolved, so have their concepts, use cases and adoption over time. While SCMs are ubiquitous in modern software development, they have been fairly novel in the 80s and 90s, and arguable it took the rise of Git and Github for them to be used nearly everywhere.
 
@@ -38,7 +38,7 @@ With the origins of decentralised version control systems behind us, we will foc
 
 In the last two parts (TBD), we will take a quick look at the current landscape of version control systems, as well as some interesting ideas that are developed as part of Fossil and Pijul, before I will talk about, what I consider the mission version control system.
 
-I would very much appreciate feedback on this series of blog posts. Please reach out to me at blog at (this domain), [Lobste.rs](https://experimentalworks.net/posts/2024-03-18-a-history-of-vcs-part1/) or [Hacker News](https://news.ycombinator.com/item?id=39950712).
+I would very much appreciate feedback on this series of blog posts. Please reach out to me at blog at (this domain), [Lobste.rs](https://lobste.rs/s/i3eg8u/history_source_control_systems_sccs_rcs) or [Hacker News](https://news.ycombinator.com/item?id=39950712).
 
 ## Part 1: SCCS and RCS
 ### 1973: SCCS
@@ -253,7 +253,7 @@ RCS is one of the most influential source control systems to this day. Systems l
 
 I hope you enjoyed this little overview of SCCS and RCS. In the next blog post we will take a look at the 1990s where the first centralized source control systems appear. They will allow multiple users to work on source code in concurrently and exchange commits via the network.
 
-If you have corrections, suggestions or just want to say thanks, please send a mail to blog at (this domain). Feel free to submit the post to [HN](https://news.ycombinator.com/item?id=39950712), [Lobste.rs](https://experimentalworks.net/posts/2024-03-18-a-history-of-vcs-part1/) or Reddit.
+If you have corrections, suggestions or just want to say thanks, please send a mail to blog at (this domain).
 
 [^1]: Taken from Wikipedia, https://en.wikipedia.org/wiki/Interleaved_deltas (Retrieved 18 March 2024).
 [^2]: SCCS Commands from IBM AIX: https://www.ibm.com/docs/en/aix/7.2?topic=s-sccs-command
