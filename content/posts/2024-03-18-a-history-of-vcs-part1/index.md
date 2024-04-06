@@ -14,7 +14,6 @@ cover:
   alt: A person organizing files and folders in front of computers
 ---
 
-# A History of Source Control Systems
 *[HN Thread](https://news.ycombinator.com/item?id=39950712) and [lobste.rs thread](https://experimentalworks.net/posts/2024-03-18-a-history-of-vcs-part1/).*
 
 Source Control Management (SCM) Systems, have a long and rich history. As the systems evolved, so have their concepts, use cases and adoption over time. While SCMs are ubiquitous in modern software development, they have been fairly novel in the 80s and 90s, and arguable it took the rise of Git and Github for them to be used nearly everywhere.
