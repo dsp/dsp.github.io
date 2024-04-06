@@ -1,5 +1,5 @@
 ---
-title: "A History of Source Control Management Systems: Part 1"
+title: "A History of Source Control Systems: SCCS and RCS (Part 1)"
 date: 2024-04-05T20:35:00Z
 draft: false
 tags:
@@ -14,7 +14,9 @@ cover:
   alt: A person organizing files and folders in front of computers
 ---
 
-# A History of Source Control Management Systems
+# A History of Source Control Systems
+*[HN Thread](https://news.ycombinator.com/item?id=39950712) and [lobste.rs thread](https://experimentalworks.net/posts/2024-03-18-a-history-of-vcs-part1/).*
+
 Source Control Management (SCM) Systems, have a long and rich history. As the systems evolved, so have their concepts, use cases and adoption over time. While SCMs are ubiquitous in modern software development, they have been fairly novel in the 80s and 90s, and arguable it took the rise of Git and Github for them to be used nearly everywhere.
 
 I want to provide an overview of what I consider the most  important and influential systems over time. This list does not attempt to be complete. There are many systems that aren’t covered and details that I will be missing. The history of some of these systems are difficult to trace back. There is little write up on the origins of early software, and so my primary sources of many of these are Wikipedia. More recent systems such as SVN, Mercurial and Git are easier to find sources on and I often recall some of the details from memory.
@@ -37,7 +39,7 @@ With the origins of decentralised version control systems behind us, we will foc
 
 In the last two parts (TBD), we will take a quick look at the current landscape of version control systems, as well as some interesting ideas that are developed as part of Fossil and Pijul, before I will talk about, what I consider the mission version control system.
 
-I would very much appreciate feedback on this series of blog posts. Please reach out to me at blog at (this domain) (or respective Lobste.rs or HN threads in case they exist).
+I would very much appreciate feedback on this series of blog posts. Please reach out to me at blog at (this domain), [Lobste.rs](https://experimentalworks.net/posts/2024-03-18-a-history-of-vcs-part1/) or [Hacker News](https://news.ycombinator.com/item?id=39950712).
 
 ## Part 1: SCCS and RCS
 ### 1973: SCCS
@@ -252,7 +254,7 @@ RCS is one of the most influential source control systems to this day. Systems l
 
 I hope you enjoyed this little overview of SCCS and RCS. In the next blog post we will take a look at the 1990s where the first centralized source control systems appear. They will allow multiple users to work on source code in concurrently and exchange commits via the network.
 
-If you have corrections, suggestions or just want to say thanks, please send a mail to blog at (this domain). Feel free to submit the post to HN, Lobste.rs or Reddit.
+If you have corrections, suggestions or just want to say thanks, please send a mail to blog at (this domain). Feel free to submit the post to [HN](https://news.ycombinator.com/item?id=39950712), [Lobste.rs](https://experimentalworks.net/posts/2024-03-18-a-history-of-vcs-part1/) or Reddit.
 
 [^1]: Taken from Wikipedia, https://en.wikipedia.org/wiki/Interleaved_deltas (Retrieved 18 March 2024).
 [^2]: SCCS Commands from IBM AIX: https://www.ibm.com/docs/en/aix/7.2?topic=s-sccs-command
