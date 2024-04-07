@@ -5,7 +5,7 @@ draft: false
 tags:
   - history
   - vcs
-author: dsp
+author: David Soria Parra
 categories:
   - essay
 cover:
@@ -14,8 +14,15 @@ cover:
   alt: A person organizing files and folders in front of computers
 ---
 
+### Updates 
+#### April 7th, 2024
+ I received an email from Marc Rochkind. He recounts some details of the creation of SCCS. I attached the email at the end of the article and made corrections inside the article. Most importantly, check out Marc's [original paper](mrochkind.com/aup/talks/SCCS-Slideshow.pdf).
+
+Thank you all for the kind comments and interesting discussion Hacker News and Lobste.rs.
+
 *[HN Thread](https://news.ycombinator.com/item?id=39950712) and [lobste.rs thread](https://lobste.rs/s/i3eg8u/history_source_control_systems_sccs_rcs).*
 
+# A History of Source Control Systems: SCCS and RCS
 Source Control Management (SCM) Systems, have a long and rich history. As the systems evolved, so have their concepts, use cases and adoption over time. While SCMs are ubiquitous in modern software development, they have been fairly novel in the 80s and 90s, and arguable it took the rise of Git and Github for them to be used nearly everywhere.
 
 I want to provide an overview of what I consider the most  important and influential systems over time. This list does not attempt to be complete. There are many systems that aren’t covered and details that I will be missing. The history of some of these systems are difficult to trace back. There is little write up on the origins of early software, and so my primary sources of many of these are Wikipedia. More recent systems such as SVN, Mercurial and Git are easier to find sources on and I often recall some of the details from memory.
@@ -46,15 +53,17 @@ It might surprise you to learn that the first version control system emerged rel
 
 Before the late 1960s, most programs were written using [punched cards](https://en.wikipedia.org/wiki/Punched_card). A program's version was its physical set of punched cards. Versioning a program involved the physical labor of organizing and storing these cards in boxes. Terminals and disks existed but were expensive. Programmers used them for input and output to the system rather than for development.
 
-In the 1970s, [video terminals](https://en.wikipedia.org/wiki/Computer_terminal) like the [VT100](https://en.wikipedia.org/wiki/VT100) and [time-sharing operating systems](https://en.wikipedia.org/wiki/Time-sharing), such as [UNIX](https://en.wikipedia.org/wiki/History_of_Unix) and [DEC TSS/8](https://en.wikipedia.org/wiki/OpenVMS)  became cheaper and more widespread. As multiple users began working on a central, time-shared computer, programmers moved from punched cards to files on disks. But this posed a new question: How do you version these files? What is the digital equivalent of organizing punched cards?
+In the 1970s, [video terminals](https://en.wikipedia.org/wiki/Computer_terminal) like the [VT100](https://en.wikipedia.org/wiki/VT100) and [time-sharing operating systems](https://en.wikipedia.org/wiki/Time-sharing), such as [UNIX](https://en.wikipedia.org/wiki/History_of_Unix) and [DEC TSS/8](https://en.wikipedia.org/wiki/OpenVMS)  became cheaper and more widespread. Programmers started working on a central, time-shared computer, and moved from punched cards to files on disks. As computing became more widely available, the amount of source code written at Bell Labs and other centers of computing increased, leading to source code chaos. The question arose: How do you best organize and version source code?
 
 #### The creation of SCCS
 
 In 1972 [Marc Rochkind](https://en.wikipedia.org/wiki/Marc_Rochkind) developed a version control system for IBM System/370 in [SNOBOL](https://en.wikipedia.org/wiki/SNOBOL). He rewrote it in C for UNIX a year later in 1973: *Thus, the first version control system, SCCS, was born.*
+
+Note: You can find the original paper on SCCS on Marc's website: https://mrochkind.com/aup/talks/SCCS-Slideshow.pdf
  
 SCCS could manage multiple versions of a file. Unlike modern source control systems, it lacked concepts like a repository or tracked files.
 
-To conserve disk space, SCCS stored each version's delta along with metadata like a change comment (now known as a commit message) and the change date. To store and retrieve new versions, programmers would ask SCCS to create a new `delta`, `get` a version or a combination of such as `delget`[^3].
+The initial version of SCCS edited on-disk source files through punched card commands, adding and deleting source code lines. With the move to UNIX, SCCS now had to version files that were edited by `ed` (or later other editors). In order to achieve this, users issued a `delta` command to record the changes. SCCS stored the difference between the current version and the last stored version as a delta. In addition it stored metadata such as a comment (now known as a commit message) and the change date. To retrieve versions, programmers would ask SCCS to `get` a version [^3].
 
 This sounds familiar? In principle, it is how most version control systems work today. However, SCCS has some very notable limitations.
 
@@ -69,13 +78,12 @@ Thirdly, to ensure single-writer access, SCCS used locking. A file under SCCS co
 SCCS exposed the storage terminology such as `delta` directly to the user. For instance, to create a new version of a file, one would use the command `sccs delta`. Modern terms like repository, commit, and checkout didn't exist then.
 
 #### A quick example
-Let’s take a quick look how one would use SCCS. In the following example, we put the file `main.c` into SCCS control and retrieve it for editing.
+Let’s take a quick look how one would use SCCS. In the following example, we put the file `main.c` into SCCS control and retrieve it for editing. Note that we are using a more recent version of SCCS, as found in FreeBSD. Original SCCS used `get`, `delta`, command and operated on SCCS files directly. The `sccs` command with subcommands appeared much later.
 
 ```sh
-$ mkdir SCCS # Create the file in SCCS
-$ sccs create main.c # Get the file and mark it for edit
-$ sccs get -e main.c # Checking the delta
-$ vi main.c
+$ sccs create -n main.c # create a new file
+$ sccs get -e.main.c # Checkout the delta and lock the file for editing
+$ ed main.c
 $ sccs delta main.c
 comments? ...
 ```
@@ -128,8 +136,7 @@ So the first line `^AI 1`, `^AD 2` means at version 1 the line was inserted and 
 This has distinct advantages for attributing lines to changes, as well as uniform retrieval time for any revision. The disadvantage is fairly inefficient storage and as well as potentially fairly poor performance in practice, as you will have to read all revisions of a file to checkout a revision. While most SCMs later on use different storage algorithms, we will see interleaved deltas being used again in modern version control systems.
 
 #### Implementations
-
-The original SCCS would go on to become widely spread across UNIX systems, but its original version stayed proprietary throughout.
+Marc's original version for SNOBOL was only used by one department. The quickly afterwards developed UNIX version, became part of the [Programmer's Workbench PWB/UNIX](https://en.wikipedia.org/wiki/PWB/UNIX) and saw widespread adoption. However it stayed proprietary throughout. It's [source code](https://www.tuhs.org/cgi-bin/utree.pl?file=PWB1/sys/source/sccs4) of SCCS v4 for PWB/UNIX can now be found on the site of the Unix Heritage Society.
 
 Eric Allman reimplemented SCCS in 1980 at the University of California Berkley. This versions made was later maintained by AT&T and Sun Microsystems before it made it’s way to [shilytools](https://codeberg.org/schilytools/schilytools/src/branch/master/sccs) where it resides today under the CDDL license. Most modern UNIX and UNIX-like distributions such as Solaris and FreeBSD, still offer this version as a package.
 
@@ -137,7 +144,7 @@ The GNU projects maintains a reimplementation of SCCS as [CSSC](https://www.gnu.
 
 #### Legacy
 
-While very few people use SCCS nowadays, it influence on modern version control systems can’t be denied. Ideas such as storing deltas, adding comments to commits, specific folders for storing versions (`SCCS/`) and expanding version IDs during checkout will remain used in many version control systems.
+While very few people use SCCS nowadays, it influence on modern version control systems can’t be denied. Ideas such as storing deltas, adding comments to commits and expanding version IDs during checkout will remain used in many version control systems.
 
 ### 1982: RCS
 SCCS was the sole version control system for the first nine years after its creation. In 1982, [Walter Tichy](https://en.wikipedia.org/wiki/Walter_F._Tichy) developed [RCS](https://en.wikipedia.org/wiki/Revision_Control_System) at the Purdue University. It’s design was published as a paper [“Design, Implementation, and Evolution of a Revision Control System”](https://dl.acm.org/doi/10.5555/800254.807748) in the Proceedings of the 6th International Conference on Software Engineering (ICSE’82).
@@ -150,7 +157,7 @@ The first difference of RCS to SCCS, is that RCS stored **separate deltas**. Ins
 
 The second difference, was to store **deltas in reverse order**. The most recent stored revision consists of the full file format. Other revisions store the delta going from the next version to the current version, forming a delta-chain from the newest revision to the older revision.
 
-This has distinct advantages. In the most common case, of checking out the most recent version, RCS requires only to read the last version and stream the content directly to a file, making checkout much faster. When writing a new revision, RCS must only calculate the difference between the new version and the most recently stored version and overwrite the last stored version with the delta and then append the new full file. In contrast, SCCS needs to always rewrite the whole file when a new version is inserted, and needs to read the whole file if any version is retrieved. On the flip side, retrieving older versions can be slower in RCS than in SCCS, where restoring any version takes always the same time.
+Tichy claimed that this has distinct advantages. In the most common case, of checking out the most recent version, RCS requires only to read the last version and stream the content directly to a file, making checkout much faster. However, retrieving older versions of the file was slower in RCS than SCCS. When writing a new versions RCS calculated the difference between the new version and the most recently stored version and rewrite the whole RCS file. SCCS also needed to rewrite the whole file, but did not need expensive difference calculation [^5].
 
 Let’s take a look at a RCS file. Note that all RCS files are usually stored as the filename with an appended suffix `,v`. Binary data is generally stored with each version being gzipped:
 
@@ -255,7 +262,32 @@ I hope you enjoyed this little overview of SCCS and RCS. In the next blog post w
 
 If you have corrections, suggestions or just want to say thanks, please send a mail to blog at (this domain).
 
+## Appendix
+#### Mail from Marc Rochkind
+Mark kindly wrote me an email as a response to this article. I attached it in full:
+
+    Hello!
+    I just read your article. It seems pretty accurate, at least about the part I had to do with. I can add some things.
+
+    You might want to reference my 1975 paper, which I have online here:
+
+    mrochkind.com/aup/talks/SCCS-Slideshow.pdf
+
+    Originally, there was no "sccs" command. That is, one typed "get", not "sccs get." Actually, I never heard of the "sccs" command until I read your article; sounds like an improvement. (I stopped working on SCCS about 50 years ago.)
+
+    The original SNOBOL implementation didn't have a "delta" command. Rather, it allowed the programmer to edit the on-disk source file with punched card commands to change, add, or delete source code lines. (No terminals!) Since all edits went through SCCS, it knew what constituted the delta. But, in going to UNIX, it was obvious that "ed" had to be used, and this presented a problem: How would the system know what had happened? The "diff" command existed then, and it was amazingly good. So, I incorporated that into the system, resulting in the "delta" command. As I recall, it invoked "diff" as a subprocess; I didn't incorporate the code itself. There was only one editor for UNIX at the time, but, of course, many others came along later, such as "vi".
+
+    The IBM SNOBOL punched-card-image version was used by only one application department at Bell Labs, and would have gone nowhere. SCCS became widely used only as part of the Programmer's Workbench, which you should look up if you're not familiar with it. Using UNIX as a front end for IBM and Univac mainframes was very attractive to programmers and became enormously popular in our corner of Bell Labs. As UNIX development took off, SCCS became part of the normal workflow. Personally, I was on to other things by then and I recall how surprised I was when I learned that SCCS had become so widely used.
+
+    I really hardly knew anything when I invented SCCS, I was just a 25-year-old kid who was charged by upper management with doing something about our source code chaos. That's what I came up with. But, at Bell Labs, coming up with things was what we were all supposed to be doing.
+
+    Good luck to you! If there's anything I can help with, let me know. By the way, I don't know your name -- your article seems to be unsigned.
+
+    Marc Rochkind
+
+
 [^1]: Taken from Wikipedia, https://en.wikipedia.org/wiki/Interleaved_deltas (Retrieved 18 March 2024).
 [^2]: SCCS Commands from IBM AIX: https://www.ibm.com/docs/en/aix/7.2?topic=s-sccs-command
 [^3]: Notable, the GPL was released on February 1st, 1989, just 9 months before Tichy applied it to RCS.
 [^4]: `diff --rcs` produces an RCS-style diff!
+[^5]: See https://www.tuhs.org/pipermail/tuhs/2019-September/018472.html for an interesting debate on SCCS vs RCS on the mailinglist of the Unix Heritage Society.
