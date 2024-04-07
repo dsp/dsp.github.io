@@ -266,24 +266,24 @@ If you have corrections, suggestions or just want to say thanks, please send a m
 #### Mail from Marc Rochkind
 Mark kindly wrote me an email as a response to this article. I attached it in full:
 
-    Hello!
-    I just read your article. It seems pretty accurate, at least about the part I had to do with. I can add some things.
-
-    You might want to reference my 1975 paper, which I have online here:
-
-    mrochkind.com/aup/talks/SCCS-Slideshow.pdf
-
-    Originally, there was no "sccs" command. That is, one typed "get", not "sccs get." Actually, I never heard of the "sccs" command until I read your article; sounds like an improvement. (I stopped working on SCCS about 50 years ago.)
-
-    The original SNOBOL implementation didn't have a "delta" command. Rather, it allowed the programmer to edit the on-disk source file with punched card commands to change, add, or delete source code lines. (No terminals!) Since all edits went through SCCS, it knew what constituted the delta. But, in going to UNIX, it was obvious that "ed" had to be used, and this presented a problem: How would the system know what had happened? The "diff" command existed then, and it was amazingly good. So, I incorporated that into the system, resulting in the "delta" command. As I recall, it invoked "diff" as a subprocess; I didn't incorporate the code itself. There was only one editor for UNIX at the time, but, of course, many others came along later, such as "vi".
-
-    The IBM SNOBOL punched-card-image version was used by only one application department at Bell Labs, and would have gone nowhere. SCCS became widely used only as part of the Programmer's Workbench, which you should look up if you're not familiar with it. Using UNIX as a front end for IBM and Univac mainframes was very attractive to programmers and became enormously popular in our corner of Bell Labs. As UNIX development took off, SCCS became part of the normal workflow. Personally, I was on to other things by then and I recall how surprised I was when I learned that SCCS had become so widely used.
-
-    I really hardly knew anything when I invented SCCS, I was just a 25-year-old kid who was charged by upper management with doing something about our source code chaos. That's what I came up with. But, at Bell Labs, coming up with things was what we were all supposed to be doing.
-
-    Good luck to you! If there's anything I can help with, let me know. By the way, I don't know your name -- your article seems to be unsigned.
-
-    Marc Rochkind
+> Hello!
+> I just read your article. It seems pretty accurate, at least about the part I had to do with. I can add some things.
+>
+> You might want to reference my 1975 paper, which I have online here:
+>
+> mrochkind.com/aup/talks/SCCS-Slideshow.pdf
+>
+> Originally, there was no "sccs" command. That is, one typed "get", not "sccs get." Actually, I never heard of the "sccs" command until I read your article; sounds like an improvement. (I stopped working on SCCS about 50 years ago.)
+>
+> The original SNOBOL implementation didn't have a "delta" command. Rather, it allowed the programmer to edit the on-disk source file with punched card commands to change, add, or delete source code lines. (No terminals!) Since all edits went through SCCS, it knew what constituted the delta. But, in going to UNIX, it was obvious that "ed" had to be used, and this presented a problem: How would the system know what had happened? The "diff" command existed then, and it was amazingly good. So, I incorporated that into the system, resulting in the "delta" command. As I recall, it invoked "diff" as a subprocess; I didn't incorporate the code itself. There was only one editor for UNIX at the time, but, of course, many others came along later, such as "vi".
+>
+> The IBM SNOBOL punched-card-image version was used by only one application department at Bell Labs, and would have gone nowhere. SCCS became widely used only as part of the Programmer's Workbench, which you should look up if you're not familiar with it. Using UNIX as a front end for IBM and Univac mainframes was very attractive to programmers and became enormously popular in our corner of Bell Labs. As UNIX development took off, SCCS became part of the normal workflow. Personally, I was on to other things by then and I recall how surprised I was when I learned that SCCS had become so widely used.
+>
+> I really hardly knew anything when I invented SCCS, I was just a 25-year-old kid who was charged by upper management with doing something about our source code chaos. That's what I came up with. But, at Bell Labs, coming up with things was what we were all supposed to be doing.
+>
+> Good luck to you! If there's anything I can help with, let me know. By the way, I don't know your name -- your article seems to be unsigned.
+>
+> Marc Rochkind
 
 
 [^1]: Taken from Wikipedia, https://en.wikipedia.org/wiki/Interleaved_deltas (Retrieved 18 March 2024).
