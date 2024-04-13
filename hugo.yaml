@@ -55,8 +55,6 @@ params:
         - name: "twitter"
           url: "https://twitter.com/dsp_"
         - name: "mastodon"
-          url: "https://chaos.social/@dsp"
-        - name: "mastodon"
           url: "https://nullptr.rehab/@dsp"
         - name: "linkedin"
           url: "https://www.linkedin.com/in/david-soria-parra-4a78b3a"
