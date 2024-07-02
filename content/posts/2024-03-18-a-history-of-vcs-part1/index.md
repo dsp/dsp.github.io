@@ -16,7 +16,7 @@ cover:
 
 ### Updates 
 #### April 7th, 2024
- I received an email from Marc Rochkind. He recounts some details of the creation of SCCS. I attached the email at the end of the article and made corrections inside the article. Most importantly, check out Marc's [original paper](mrochkind.com/aup/talks/SCCS-Slideshow.pdf).
+ I received an email from Marc Rochkind. He recounts some details of the creation of SCCS. I attached the email at the end of the article and made corrections inside the article. Most importantly, check out Marc's [original paper](https://mrochkind.com/aup/talks/SCCS-Slideshow.pdf).
 
 Thank you all for the kind comments and interesting discussion Hacker News and Lobste.rs.
 
