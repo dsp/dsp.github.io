@@ -3,8 +3,7 @@ render = false
 +++
 # about
 
-I am David Soria Parra, a software engineer and manager with 15+
-years experience. 
+I am David Soria Parra, I am a Member of Technical Staff at Anthropic.
 
 I have a rich history in developing and maintaining open source
 software. I've actively contributed to the [PHP programming language](https://php.net)
@@ -23,3 +22,5 @@ focusing Static Analysis and Simulation-based Testing teams.
 
 In 2023 I was an enterpreneur in residence at [Sutter Hill
 Ventures](https://shv.com) in London.
+
+I joined Anthropic in April 2024.
