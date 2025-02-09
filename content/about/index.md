@@ -23,4 +23,9 @@ focusing Static Analysis and Simulation-based Testing teams.
 In 2023 I was an enterpreneur in residence at [Sutter Hill
 Ventures](https://shv.com) in London.
 
-I joined Anthropic in April 2024.
+I joined Anthropic in April 2024. I am the co-creator of the
+[Model Context Protocol](https://modelcontextprotocol.io).
+
+## links
+* [GitHub](https://github.com/dsp)
+* [Mastodon](https://nullptr.rehab/dsp)
