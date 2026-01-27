@@ -306,11 +306,11 @@ em, i {
 code {
   font-family: 'BerkeleyMono', 'SF Mono', 'Fira Code', monospace;
   font-size: 0.9em;
-  background-color: rgba(32, 163, 158, 0.15);
-  color: var(--light-sea-green);
+  background-color: rgba(32, 163, 158, 0.2);
+  color: #5ee8df;
   padding: 0.15em 0.4em;
   border-radius: 2px;
-  border: 1px solid rgba(32, 163, 158, 0.3);
+  border: 1px solid rgba(32, 163, 158, 0.4);
 }
 
 /* Code Blocks */
