@@ -95,6 +95,11 @@ h3 { font-size: 1.2rem; }
 h4, h5, h6 { font-size: 1rem; }
 
 /* Header decorations */
+.post-content h1 {
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--vibrant-coral);
+}
+
 .post-content h2::before {
   content: '//';
   color: var(--vibrant-coral);
@@ -107,13 +112,6 @@ h4, h5, h6 { font-size: 1rem; }
   color: var(--light-sea-green);
   margin-right: 0.5rem;
   opacity: 0.7;
-}
-
-.post-content h2,
-.post-content h3 {
-  padding-bottom: 0.3rem;
-  border-bottom: 2px solid transparent;
-  border-image: linear-gradient(90deg, var(--vibrant-coral) 0%, transparent 60%) 1;
 }
 
 p {
@@ -336,6 +334,8 @@ pre code {
   padding: 0;
   font-size: 0.875rem;
   line-height: 1.5;
+  border: none;
+  color: var(--text);
 }
 
 /* Copy Button */
