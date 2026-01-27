@@ -5,3 +5,18 @@
 node_modules
 dist
 tmp
+
+# Devenv
+.devenv*
+devenv.lock
+devenv.nix
+devenv.yaml
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+.envrc
+
+# pre-commit
+.pre-commit-config.yaml
