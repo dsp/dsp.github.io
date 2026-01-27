@@ -14,7 +14,7 @@
     <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
     <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
     {{- with .Summary }}
-    <p class="post-summary">{{ . | plainify | truncate 150 }}</p>
+    <p class="post-summary">{{ . | plainify | htmlUnescape | truncate 150 }}</p>
     {{- end }}
   </li>
   {{- end }}
