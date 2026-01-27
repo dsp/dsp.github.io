@@ -7,15 +7,19 @@
 </div>
 {{- end }}
 
+{{- if .Pages }}
 <ul class="post-list">
   {{- range .Pages.ByDate.Reverse }}
   <li class="post-item">
     <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-    <h3 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+    <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
     {{- with .Summary }}
     <p class="post-summary">{{ . | plainify | truncate 150 }}</p>
     {{- end }}
   </li>
   {{- end }}
 </ul>
+{{- else }}
+<p>No posts yet.</p>
+{{- end }}
 {{ end }}

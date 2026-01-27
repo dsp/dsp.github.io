@@ -1,8 +1,8 @@
 <footer class="site-footer">
   {{- with .Site.Params.socialLinks }}
-  <nav class="social-links">
+  <nav class="social-links" aria-label="Social media links">
     {{- range . }}
-    <a href="{{ .url }}" rel="me">{{ .name }}</a>
+    <a href="{{ .url }}" rel="me noopener" aria-label="{{ .name }}">{{ .name }}</a>
     {{- end }}
   </nav>
   {{- end }}
