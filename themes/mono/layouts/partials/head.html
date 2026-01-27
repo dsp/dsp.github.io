@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+
+{{- with .Site.Params.assets.favicon.ico }}
+<link rel="icon" href="{{ . }}">
+{{- end }}
+{{- with .Site.Params.assets.favicon.svg }}
+<link rel="icon" type="image/svg+xml" href="{{ . }}">
+{{- end }}
+{{- with .Site.Params.assets.favicon.appleTouchIcon }}
+<link rel="apple-touch-icon" href="{{ . }}">
+{{- end }}
+
+<link rel="stylesheet" href="/css/main.css">
+<script src="/js/copy.js" defer></script>
+
+{{- if .Site.Params.googleAnalytics }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ .Site.Params.googleAnalytics }}');
+</script>
+{{- end }}

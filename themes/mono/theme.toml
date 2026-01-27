@@ -1,0 +1,10 @@
+# Theme metadata
+name = "mono"
+license = "MIT"
+licenselink = "https://github.com/dsp/dsp.github.io/blob/main/LICENSE"
+description = "A minimal monospace theme with warm colors"
+homepage = "https://experimentalworks.net"
+min_version = "0.120.0"
+
+[author]
+  name = "dsp"

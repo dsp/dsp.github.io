@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  {{- with .Site.Params.socialLinks }}
+  <nav class="social-links">
+    {{- range . }}
+    <a href="{{ .url }}" rel="me">{{ .name }}</a>
+    {{- end }}
+  </nav>
+  {{- end }}
+</footer>

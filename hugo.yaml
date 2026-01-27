@@ -2,89 +2,53 @@ baseURL: "https://experimentalworks.net"
 languageCode: "en-us"
 title: "dsp"
 
-theme: "PaperMod"
+theme: "mono"
 
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
-googleAnalytics: "G-QR6X9KQDDE"
 
 minify:
     - disableXML: true
     - minifyOutput: true
 
 params:
-    env: production # to enable google analytics, opengraph, twitter-cards and schema.
+    env: production
     keywords: [Blog, Portfolio]
     author: dsp
-    DateFormat: "January 2, 2006"
-    defaultTheme: auto # dark, light
-    disableThemeToggle: true
+    description: "dsp's personal site"
 
-    ShowReadingTime: true
-    ShowShareButtons: false
-    ShowPostNavLinks: true
-    ShowBreadCrumbs: false
-    ShowCodeCopyButtons: true
-    ShowWordCount: true
-    ShowRssButtonInSectionTermList: false
-    UseHugoToc: true
-    disableSpecial1stPost: false
-    disableScrollToTop: false
-    comments: false
-    hidemeta: false
-    hideSummary: false
-    showtoc: false
-    tocopen: false
+    profileTitle: "I am dsp"
+    profileSubtitle: "Member of Technical Staff @ Anthropic"
 
-    profileMode:
-        enabled: true
-        title: "I am dsp"
-        subtitle: "Member of Technical Staff @ Anthropic"
-        imageUrl: "https://assets.chaos.social/accounts/avatars/109/245/550/689/304/098/original/e9deb550e40cb0a7.png"
-        imageWidth: 120
-        imageHeight: 120
-        buttons:
-            - name: Blog
-              url: "/posts"
-            - name: About 
-              url: "/about"
+    showReadingTime: true
+    googleAnalytics: "G-QR6X9KQDDE"
 
-    socialIcons: 
+    socialLinks:
         - name: "twitter"
           url: "https://twitter.com/dsp_"
         - name: "mastodon"
           url: "https://nullptr.rehab/@dsp"
         - name: "linkedin"
           url: "https://www.linkedin.com/in/david-soria-parra-4a78b3a"
-    assets:
-        # disableHLJS: true # to disable highlight.js
-        # disableFingerprinting: true
-        favicon: "fav/favicon.ico"
-        favicon16x16: "fav/favicon-16x16.png"
-        favicon32x32: "fav/favicon-32x32.png"
-        apple_touch_icon: "fav/apple-touch-icon.png"
 
-    label:
-        text: "Home"
-        icon: /fav/apple-touch-icon.png
-        iconHeight: 35
+    assets:
+        favicon:
+            ico: "/fav/favicon.ico"
+            appleTouchIcon: "/fav/apple-touch-icon.png"
+
 menu:
   main:
     - identifier: blog
       name: blog
       url: /posts/
       weight: 10
-    - identifier: categories
-      name: categories
-      url: /categories/
-      weight: 20
     - identifier: tags
       name: tags
       url: /tags/
-      weight: 30
+      weight: 20
     - identifier: about
       name: about
       url: /about/
-      weight: 40
+      weight: 30
