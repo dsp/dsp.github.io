@@ -9,8 +9,6 @@ tmp
 # Devenv
 .devenv*
 devenv.lock
-devenv.nix
-devenv.yaml
 devenv.local.nix
 devenv.local.yaml
 
