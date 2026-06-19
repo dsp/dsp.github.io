@@ -3,7 +3,7 @@
 {
   packages = [
     pkgs.git
-    pkgs.jj
+    pkgs.jujutsu
     pkgs.hugo
     pkgs.mdformat
   ];
