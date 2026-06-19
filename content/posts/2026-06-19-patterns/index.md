@@ -1,5 +1,5 @@
 ---
-title: "2026 06 19 Patterns"
+title: "Patterns"
 date: 2026-06-19T14:44:26+01:00
 draft: false
 ---
