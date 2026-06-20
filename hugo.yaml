@@ -57,6 +57,10 @@ menu:
       name: blog
       url: /posts/
       weight: 10
+    - identifier: projects
+      name: projects
+      url: /projects/
+      weight: 15
     - identifier: tags
       name: tags
       url: /tags/
